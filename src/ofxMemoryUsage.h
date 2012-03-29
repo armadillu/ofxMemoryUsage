@@ -10,6 +10,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofConstants.h"
 
 #ifdef TARGET_WIN32
 	#include "windows.h"
@@ -26,7 +27,7 @@
 	#include "sys/vtimes.h"
 #endif
 
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)
 
 	#include <sys/types.h>
 	#include <sys/sysctl.h>

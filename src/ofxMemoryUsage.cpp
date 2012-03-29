@@ -68,7 +68,7 @@ int ofxMemoryUsage::getTotalMemory(){
 	mb = physical_memory/1048576;	
 #endif
 	
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)
 	int64_t physical_memory;
 	int mib[2];
 	mib[0] = CTL_HW;
@@ -103,7 +103,7 @@ int ofxMemoryUsage::getUsedMemory(){
 	mb = used_memory/1048576;
 #endif
 	
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)
 	
 	vm_size_t page_size;
 	mach_port_t mach_port;
@@ -163,7 +163,7 @@ int ofxMemoryUsage::getProcessMemory(){
 	mb = result/1024;
 #endif
 	
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)
 	struct task_basic_info t_info;
 	mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
 	
