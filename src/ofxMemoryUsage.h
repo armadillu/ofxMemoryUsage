@@ -20,6 +20,7 @@
 #ifdef TARGET_LINUX
 	#include <sys/types.h>
 	#include <sys/sysctl.h>
+	#include <sys/sysinfo.h>
 	#include "stdlib.h"
 	#include "stdio.h"
 	#include "string.h"
@@ -41,7 +42,6 @@
 #endif
 
 
-
 class ofxMemoryUsage{
 	
 public:	
@@ -59,6 +59,16 @@ private:
 	int memory_used_total;
 	int memory_used_process;		
 	
+#ifdef TARGET_LINUX
+    int parseLine(char* line) {
+        int i = strlen(line);
+        while (*line < '0' || *line > '9') line++;
+        line[i-3] = '\0';
+        i = atoi(line);
+        return i;
+    }
+#endif
+
 };
 
 
