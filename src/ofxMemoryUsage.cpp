@@ -98,7 +98,7 @@ int ofxMemoryUsage::getUsedMemory(){
 #ifdef TARGET_LINUX
     struct sysinfo memInfo;
     sysinfo (&memInfo);
-    long long used_memory = memInfo.totalram;
+    long long used_memory = memInfo.totalram - memInfo.freeram;
     used_memory *= memInfo.mem_unit;
 	mb = used_memory/1048576;
 #endif
@@ -156,8 +156,10 @@ int ofxMemoryUsage::getProcessMemory(){
 	int result = -1;
 	char line[128];
 	while (fgets(line, 128, file) != NULL){
-		if (strncmp(line, "VmRSS:", 6) == 0) result = parseLine(line);
-		break;
+        if (strncmp(line, "VmSize:", 7) == 0){
+            result = parseLine(line);
+            break;
+        }
 	}
 	fclose(file);
 	mb = result/1024;
