@@ -145,7 +145,7 @@ int ofxMemoryUsage::getProcessMemory(){
 	
 #ifdef TARGET_WIN32
     PROCESS_MEMORY_COUNTERS_EX pmc;
-    GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));
+    GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*) &pmc, sizeof(pmc));
     SIZE_T virtualMemUsedByMe = pmc.PrivateUsage;
     SIZE_T used_memory = pmc.WorkingSetSize;
 	mb = used_memory/1048576;	
