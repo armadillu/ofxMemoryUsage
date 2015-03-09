@@ -1,0 +1,1 @@
+you might need to add "pasapi.lib" into your libs in windows
