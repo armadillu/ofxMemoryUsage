@@ -15,6 +15,7 @@
 #include "ofxMemoryUsage.h"
 
 
+#ifdef TARGET_WIN32
 #if (_WIN32_WINNT < 0x0501)
 
 typedef struct _PROCESS_MEMORY_COUNTERS_EX {
@@ -31,7 +32,7 @@ typedef struct _PROCESS_MEMORY_COUNTERS_EX {
 	SIZE_T PrivateUsage;
 } PROCESS_MEMORY_COUNTERS_EX, 
 	*PPROCESS_MEMORY_COUNTERS_EX;
-
+#endif
 #endif
 
 void ofxMemoryUsage::setup(){
