@@ -19,13 +19,13 @@
 
 #ifdef TARGET_LINUX
 	#include <sys/types.h>
-	#include <sys/sysctl.h>
+	//#include <sys/sysctl.h>
 	#include <sys/sysinfo.h>
 	#include "stdlib.h"
 	#include "stdio.h"
 	#include "string.h"
 	#include "sys/times.h"
-	#include "sys/vtimes.h"
+	//#include "sys/vtimes.h"
 #endif
 
 #if defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)
